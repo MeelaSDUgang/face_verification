@@ -26,9 +26,15 @@ No cloud, no third-party APIs, no biometric data leaving your server.
 # 1. Clone / copy this folder
 cd face-verify-service
 
-# 2. (Optional) set an API key
-cp .env.example .env
-# Edit .env → API_KEY=your-secret
+# 2. Set up env variables for example like these
+MODEL_NAME=Facenet512
+DETECTOR_BACKEND=retinaface
+SIMILARITY_THRESHOLD=0.40
+DB_PATH=data/embeddings.db
+
+HOST=0.0.0.0
+PORT=8000
+
 
 # 3. Build & run
 docker compose up --build
