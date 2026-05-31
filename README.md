@@ -146,44 +146,6 @@ curl -X DELETE <API_URL>/users/alice
 
 ---
 
-# Интеграция (Python)
-
-Скопируйте файл `face_verify_client.py` в свой проект:
-
-```python
-from face_verify_client import FaceVerifyClient
-
-client = FaceVerifyClient(
-    "<API_URL>",
-    api_key="your-key"
-)
-
-# Регистрация пользователя
-client.register(
-    "user_123",
-    "/uploads/onboarding_photo.jpg"
-)
-
-# Проверка личности
-result = client.verify(
-    "user_123",
-    "/tmp/photo.jpg"
-)
-
-if result.verified:
-    print(
-        f"✓ Личность подтверждена "
-        f"({result.confidence:.0%} уверенности)"
-    )
-else:
-    print(
-        f"✗ Лицо не совпадает "
-        f"(distance={result.distance:.3f})"
-    )
-```
-
----
-
 # Конфигурация
 
 Все параметры задаются через переменные окружения.
@@ -213,9 +175,9 @@ else:
 
 | Значение | Поведение                    |
 | -------- | ---------------------------- |
-| `0.30`   | Очень строгая проверка       |
+| `0.30`   | Более мягкая проверка       |
 | `0.40`   | **Сбалансированный вариант** |
-| `0.50`   | Более мягкая проверка        |
+| `0.50`   | Очень строгая проверка     |
 
 ---
 
