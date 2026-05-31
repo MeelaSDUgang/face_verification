@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  face-verify:
+    build: .
+    container_name: face-verify
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/service/data   
+    environment:
+      - MODEL_NAME=Facenet512
+      - DETECTOR_BACKEND=retinaface
+      - SIMILARITY_THRESHOLD=0.40
+      - DB_PATH=data/embeddings.db
+    restart: unless-stopped
